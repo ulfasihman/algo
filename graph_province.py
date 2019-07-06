@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jun 30 18:13:45 2019
+Created on Fri Jul  5 13:56:05 2019
 
 @author: Ulfa
 """
@@ -14,13 +14,13 @@ mySQLconnection = mysql.connector.connect(host='localhost',
                              database='walet',
                              user='root',
                              password='')
-sql_select_Query = "select nilai from hargatotal_bw"
+sql_select_Query = "select nilai from asalprovinsi_bw where id_provinsi=2"
 cursor = mySQLconnection .cursor()
 cursor.execute(sql_select_Query)
 db = np.array(cursor.fetchall())
 
-optimal_alpha = None
-optimal_gamma = None
+optimal_alpha = 0.5
+optimal_gamma = 0.3
 best_mse = None
 mean_results_for_all_possible_alpha_gamma_values = np.zeros((9, 9))
 for gamma in range(0, 9):

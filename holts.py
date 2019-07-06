@@ -14,18 +14,17 @@ try:
                              database='walet',
                              user='root',
                              password='')
-   sql_select_Query = "select nilai from hargatotal_bw"
+   sql_select_Query = "select volume,nilai from hargatotal_bw"
    cursor = mySQLconnection .cursor()
    cursor.execute(sql_select_Query)
    records = cursor.fetchall()
-   print (records)
    
+   df = pd.DataFrame(records)
    
-   
+   print(df)
 except Error as e :
     print ("Error while connecting to MySQL", e)
 finally:
     #closing database connection.
     if(mySQLconnection .is_connected()):
-        mySQLconnection.close()
-        print("MySQL connection is closed")
+        mySQLconnection.rollback()

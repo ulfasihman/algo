@@ -26,6 +26,8 @@ try:
        print("id_tahun  = ", row[4], "\n")
    cursor.close()
    
+   
+   
 except Error as e :
     print ("Error while connecting to MySQL", e)
 finally:
